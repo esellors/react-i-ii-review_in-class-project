@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import NameInputOutput from "./Components/NameInputOutput";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      siteTitle: '',
+      name: ''
+    };
+    this.grabInput = this.grabInput.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ siteTitle: 'The Name Displayer' })
+  }
+
+  grabInput(evt) {
+    this.setState({ name: evt.target.value })
+  }
+
+  render() {
+    // console.log('App component has rendered')
+
+    return (
+      <div className="App">
+        <h1>{this.state.siteTitle}</h1>
+        <NameInputOutput 
+          grabInput={this.grabInput}
+          displayName={this.state.name} 
+        />
+      </div>
+    );
+  }
 }
-
-export default App;
