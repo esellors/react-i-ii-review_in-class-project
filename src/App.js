@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ siteTitle: "The Name Displayer" });
+    this.setState({ siteTitle: "Secrets? What secrets?" });
   }
 
   grabInput(evt) {
